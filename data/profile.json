@@ -1,0 +1,14 @@
+{
+    "name": "John Doe",
+    "title": "Senior Full Stack Engineer | Cloud Architect",
+    "bio": "Enthusiastic and highly skilled Software Engineer with over 8 years of experience in building scalable web applications and distributed systems. Passionate about solving complex architectural challenges and mentoring engineering teams. Proven track record of delivering high-impact solutions using React, Node.js, and multi-cloud environments (AWS/Azure). Focused on performance optimization and driving development lifecycle efficiencies.",
+    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150",
+    "socials": {
+        "github": "https://github.com/johndoe",
+        "linkedin": "https://linkedin.com/in/johndoe"
+    },
+    "resume": {
+        "phone": "+1-555-0123",
+        "website": "https://johndoe.dev"
+    }
+}

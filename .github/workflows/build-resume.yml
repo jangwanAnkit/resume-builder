@@ -1,0 +1,46 @@
+name: Build and Release Resume
+
+on:
+  push:
+    paths:
+      - 'templates/resume.tex.j2'
+      - 'data/*.json'
+      - 'scripts/render_resume.py'
+      - '.github/workflows/build-resume.yml'
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Jinja2
+        run: pip install jinja2
+
+      - name: Render Resume Template
+        run: python scripts/render_resume.py
+
+      - name: Compile LaTeX to PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+
+      - name: Create/Update Release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "Latest Resume"
+          files: |
+            resume.pdf

@@ -1,0 +1,140 @@
+%-------------------------
+% Resume in Latex
+% Author : Ankit Jangwan
+% Based off of: https://github.com/sb2nov/resume
+% Template variant: Jake Gutierrez
+% License : MIT
+%------------------------
+% NOTE: This is a Jinja2 template. Run scripts/render_resume.py to generate resume.tex
+
+\documentclass[letterpaper,10pt]{article}
+
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage[margin=0.4in, top=0.35in, bottom=0.35in]{geometry}
+
+\input{glyphtounicode}
+\newcommand{\phone}[1]{\href{tel:#1}{\faPhone{} #1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Margins handled by geometry package
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure ATS-readable PDF
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands (Jake variant)
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\href{https://yourwebsite.com}{\Large Your Name}} & Email : \href{mailto:email@example.com}{email@example.com}\\
+  \href{https://yourwebsite.com}{https://yourwebsite.com} & Mobile : +1-234-567-8900 \\
+  \href{https://linkedin.com/in/yourusername}{LinkedIn: yourusername} & \href{https://github.com/yourusername}{GitHub: yourusername} \\
+\end{tabular*}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University Name}{City, Country}
+      {Degree Name}{Start - End}
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Role Title}{City, Country}
+      {Company Name}{Jan 2023 -- Present}
+      \resumeItemListStart
+          \resumeItem{Description of your responsibilities and achievements.}
+          \resumeItem{Another bullet point.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{Project Title} $|$ \emph{Tech 1, Tech 2}}{Completed}
+      \resumeItemListStart
+        \resumeItem{Project description.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+  \vspace{-6pt}
+  \small{\textit{For more projects, visit: \href{https://yourwebsite.com\#projects}{https://yourwebsite.com}}}
+  \vspace{-4pt}
+
+%-------------------------------------------
+\end{document}

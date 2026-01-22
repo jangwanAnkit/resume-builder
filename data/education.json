@@ -1,0 +1,16 @@
+{
+    "education": [
+        {
+            "institution": "University of Technology",
+            "location": "Austin, TX",
+            "degree": "Master of Science in Computer Science",
+            "duration": "Sep. 2014 -- May 2016"
+        },
+        {
+            "institution": "State University",
+            "location": "Lansing, MI",
+            "degree": "Bachelor of Engineering in Information Technology",
+            "duration": "Sep. 2010 -- May 2014"
+        }
+    ]
+}

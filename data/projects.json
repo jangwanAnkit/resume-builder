@@ -1,0 +1,46 @@
+{
+    "projects": [
+        {
+            "title": "Open-Source E-Commerce Engine",
+            "description": "A high-performance, modular e-commerce engine built for scalability. Features include real-time inventory management, multi-currency support, and a pluggable payment architecture.",
+            "image": "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=800&h=400",
+            "technologies": [
+                "Next.js",
+                "TypeScript",
+                "PostgreSQL",
+                "Redis",
+                "AWS Lambda"
+            ],
+            "liveUrl": "https://github.com/johndoe/ecommerce-engine",
+            "status": "ongoing"
+        },
+        {
+            "title": "AI-Powered Analytics Dashboard",
+            "description": "An interactive dashboard that leverages OpenAI APIs to provide natural language insights from raw CSV data. Implemented a custom RAG (Retrieval-Augmented Generation) pipeline for data context.",
+            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=400",
+            "technologies": [
+                "Python",
+                "Django",
+                "OpenAI API",
+                "React",
+                "D3.js"
+            ],
+            "liveUrl": "https://analytics.johndoe.dev",
+            "status": "completed"
+        },
+        {
+            "title": "Remote Health Monitoring System",
+            "description": "A HIPAA-compliant IoT platform for monitoring patient vitals in real-time. Designed the low-latency websocket architecture to handle thousands of concurrent data streams.",
+            "image": "https://images.unsplash.com/photo-1576091160550-217359f488d5?auto=format&fit=crop&w=800&h=400",
+            "technologies": [
+                "Go",
+                "WebSockets",
+                "InfluxDB",
+                "Docker",
+                "Terraform"
+            ],
+            "liveUrl": "https://healthsync.dev",
+            "status": "completed"
+        }
+    ]
+}

@@ -1,0 +1,47 @@
+{
+    "experience": [
+        {
+            "company": "Tech Innovations Global",
+            "role": "Senior Software Development Engineer",
+            "startDate": "2021-06",
+            "endDate": null,
+            "location": "San Francisco, CA (Remote)",
+            "logo": "https://example.com/logo1.png",
+            "details": [
+                "Led the migration of a legacy monolithic architecture to a microservices-based system using Node.js and Docker, improving system uptime by 35%.",
+                "Architected and deployed a real-time data processing pipeline using Kafka and Spark, handling over 10 million events daily.",
+                "Optimized database performance by implementing advanced indexing strategies and Redis caching, resulting in a 50% reduction in API response times.",
+                "Mentored a team of 5 junior and mid-level engineers, conducting regular code reviews and architectural workshops.",
+                "Collaborated with product owners and stakeholders to define technical roadmaps and deliver features ahead of project deadlines."
+            ]
+        },
+        {
+            "company": "CloudStream Systems",
+            "role": "Full Stack Developer",
+            "startDate": "2018-03",
+            "endDate": "2021-05",
+            "location": "Austin, TX",
+            "logo": "https://example.com/logo2.png",
+            "details": [
+                "Developed and maintained the core user-facing dashboard using React and Redux, enhancing the user experience for 500k+ active users.",
+                "Integrated third-party payment gateways (Stripe, PayPal) and automated invoicing workflows, reducing manual overhead by 20%.",
+                "Built and scaled RESTful APIs using Python (Django) and PostgreSQL, ensuring high availability and robust data integrity.",
+                "Implemented CI/CD pipelines using GitHub Actions, reducing deployment time from 2 hours to 15 minutes.",
+                "Enhanced application accessibility (a11y) to meet WCAG 2.1 standards, broadening the reach to a more diverse user base."
+            ]
+        },
+        {
+            "company": "DataSphere Solutions",
+            "role": "Junior Software Engineer",
+            "startDate": "2016-07",
+            "endDate": "2018-02",
+            "location": "New York, NY",
+            "logo": "https://example.com/logo3.png",
+            "details": [
+                "Assisted in the development of a data visualization platform using Chart.js and Vue.js, helping clients visualize complex market trends.",
+                "Developed automated unit and integration tests using Jest and Cypress, increasing code coverage from 40% to 85%.",
+                "Fixed critical bugs and improved the performance of the internal CRM tool, increasing team productivity by 15%."
+            ]
+        }
+    ]
+}
