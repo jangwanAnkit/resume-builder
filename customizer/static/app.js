@@ -657,22 +657,23 @@ function applyTailoredData(data, isSkip) {
             if (typeof v === "number") return (v <= 1 && v >= 0) ? (v * 100).toFixed(0) + "%" : String(v);
             return String(v);
         };
+        const tooltip = (label, text) => `<span class="tooltip-wrap">${esc(label)}<span class="tooltip-icon">?</span><span class="tooltip-text">${esc(text)}</span></span>`;
         const rows = [
-            ["Alignment", es.job_alignment_score],
-            ["Preservation", es.content_preservation],
+            [tooltip("Alignment", "Token overlap between tailored resume and JD. Higher = more JD keywords matched. Healthy: 15-35%. Pass: ≥8%."), es.job_alignment_score],
+            [tooltip("Preservation", "How much original content was kept (Jaccard similarity). Below 40% = heavy rewriting, hallucination risk. Healthy: 55-80%. Pass: ≥55%."), es.content_preservation],
         ];
         if (es.hallucinated_numbers && es.hallucinated_numbers.length > 0) {
-            rows.push(["Hallucinated", es.hallucinated_numbers]);
+            rows.push([tooltip("Hallucinated", "Numbers in tailored output NOT in original resume. These are suspicious fabricated metrics. Empty = clean."), es.hallucinated_numbers]);
         }
         if (es.immutable_violations && es.immutable_violations.length > 0) {
-            rows.push(["Field violations", es.immutable_violations]);
+            rows.push([tooltip("Field violations", "Immutable fields (company, dates, location, URLs) that the LLM incorrectly modified. Must be zero."), es.immutable_violations]);
         }
         if (es.overall_pass !== undefined) {
-            rows.push(["Overall", es.overall_pass ? "passed" : "needs review"]);
+            rows.push([tooltip("Overall", "All gates must pass: alignment ≥8%, preservation ≥55%, zero hallucinations, zero immutable violations, zero bullet count changes."), es.overall_pass ? "passed" : "needs review"]);
         }
         evalHtml = `<div style="font-size: 11px; margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px dashed var(--border);">
             <div style="text-transform: uppercase; color: var(--fg); margin-bottom: 0.35rem;">EVAL SCORES:</div>
-            ${rows.map(([k, v]) => `<div style="color: var(--muted); display: flex; justify-content: space-between;"><span>${esc(k)}</span><span style="color: var(--fg);">${esc(formatVal(v))}</span></div>`).join("")}
+            ${rows.map(([k, v]) => `<div style="color: var(--muted); display: flex; justify-content: space-between;"><span>${k}</span><span style="color: var(--fg);">${esc(formatVal(v))}</span></div>`).join("")}
         </div>`;
     }
 
