@@ -1,0 +1,204 @@
+# promptfooconfig.yaml — Prompt regression testing for resume-builder tailoring.
+#
+# TOOL: promptfoo (https://promptfoo.dev)
+# PURPOSE: Compare prompt variations and model providers side-by-side.
+#
+# QUICK START
+# -----------
+# 1. Install: npm install -g promptfoo
+# 2. Set env vars:
+#      export OPENAI_API_KEY=sk-...
+#      export GEMINI_API_KEY=...        # optional, for multi-provider comparison
+#      export CEREBRAS_API_KEY=...      # optional, for Cerebras comparison
+# 3. Run evaluation:
+#      cd eval/promptfoo
+#      npx promptfoo eval
+# 4. Open web UI:
+#      npx promptfoo view
+#
+# WHY promptfoo?
+# --------------
+# - Zero Python dependency: works as a standalone npm tool
+# - YAML-driven test cases: easy to add without writing code
+# - Built-in `is-json` assertion: immediate parse validation
+# - Multi-provider comparison: test OpenAI vs Gemini vs Cerebras side-by-side
+#   in a single run — invaluable when evaluating cost/quality tradeoffs
+# - Web UI: visually compare outputs, spot regressions instantly
+# - CI integration: exits with non-zero on failures, integrates with GitHub Actions
+
+description: "Resume tailoring quality evaluation"
+
+# ---------------------------------------------------------------------------
+# Prompts
+# ---------------------------------------------------------------------------
+# We test a single prompt template. To A/B test prompt variants, add more
+# entries here (e.g. file://tailoring_prompt_v2.txt) and promptfoo will
+# run all combinations.
+prompts:
+  - file://tailoring_prompt.txt
+
+# ---------------------------------------------------------------------------
+# Providers (models to test)
+# ---------------------------------------------------------------------------
+# Remove or comment out providers you don't have API keys for.
+# promptfoo will run every test case against every provider.
+providers:
+  - id: openai:gpt-4o-mini
+    label: "GPT-4o Mini"
+    config:
+      temperature: 0.3
+      response_format:
+        type: json_object
+
+  - id: openai:gpt-4o
+    label: "GPT-4o"
+    config:
+      temperature: 0.3
+      response_format:
+        type: json_object
+
+  # Uncomment to test Google Gemini:
+  # - id: google:gemini-1.5-flash
+  #   label: "Gemini 1.5 Flash"
+  #   config:
+  #     temperature: 0.3
+
+  # Uncomment to test Cerebras (ultra-fast inference):
+  # - id: openai:llama3.1-70b
+  #   label: "Cerebras Llama 3.1 70B"
+  #   config:
+  #     apiBaseUrl: https://api.cerebras.ai/v1
+  #     apiKeyEnvar: CEREBRAS_API_KEY
+  #     temperature: 0.3
+
+# ---------------------------------------------------------------------------
+# Default assertions applied to ALL test cases
+# ---------------------------------------------------------------------------
+defaultTest:
+  assert:
+    # 1. Output must be valid JSON
+    - type: is-json
+      metric: schema/json-valid
+
+    # 2. Run our comprehensive custom metric suite (metrics.py + schema check)
+    # This calls assertions.py::get_assert() with the full context
+    - type: python
+      value: file://assertions.py
+      metric: quality/comprehensive-score
+
+    # 3. Cost guard: warn if a single call exceeds $0.10
+    - type: cost
+      threshold: 0.10
+
+    # 4. Latency guard: warn if response takes > 30 seconds
+    - type: latency
+      threshold: 30000
+
+# ---------------------------------------------------------------------------
+# Test cases
+# ---------------------------------------------------------------------------
+tests:
+  # ---- Test 1: Backend Engineer (high match) --------------------------------
+  - description: "Backend Engineer - Distributed Systems (HIGH MATCH)"
+    vars:
+      jd: |
+        We are looking for a Senior Backend Engineer to design and build distributed
+        systems at scale. Requirements: 5+ years of backend development experience.
+        Strong proficiency in Python, Go, or Java. Experience with microservices
+        architecture and containerization (Docker, Kubernetes). Familiarity with
+        message queues (Kafka, RabbitMQ). Database expertise (PostgreSQL, Redis,
+        DynamoDB). Experience with CI/CD pipelines and cloud platforms (AWS preferred).
+        Nice to have: Experience with real-time data processing, system design,
+        mentoring junior engineers.
+      resume_json: file://../fixtures/sample_resume.json
+
+    assert:
+      # Relevance should be high (7-10) for this strong match
+      - type: javascript
+        value: |
+          const data = JSON.parse(output);
+          const r = data.relevance;
+          if (r < 7 || r > 10) throw new Error(`relevance=${r}, expected 7-10`);
+          return true;
+        metric: relevance/high-match-calibration
+
+      # Key backend terms must appear in the output
+      - type: javascript
+        value: |
+          const lc = output.toLowerCase();
+          const required = ['microservices', 'docker', 'kafka', 'postgresql', 'redis'];
+          const missing = required.filter(kw => !lc.includes(kw));
+          if (missing.length > 0) throw new Error('Missing keywords: ' + missing.join(', '));
+          return true;
+        metric: keywords/backend-terms-present
+
+  # ---- Test 2: Frontend React Developer (moderate match) -------------------
+  - description: "Frontend React Developer (MODERATE MATCH)"
+    vars:
+      jd: |
+        We're hiring a Senior Frontend Developer to build exceptional user experiences.
+        Requirements: 5+ years of frontend development. Expert-level React, TypeScript,
+        and modern CSS. Experience with state management (Redux, Zustand, or similar).
+        Strong understanding of web performance optimization. Experience with testing
+        frameworks (Jest, React Testing Library). Nice to have: Next.js, GraphQL,
+        accessibility (WCAG), design system development.
+      resume_json: file://../fixtures/sample_resume.json
+
+    assert:
+      # Relevance should be moderate (4-7) — candidate has React but is backend-heavy
+      - type: javascript
+        value: |
+          const data = JSON.parse(output);
+          const r = data.relevance;
+          if (r < 4 || r > 7) throw new Error(`relevance=${r}, expected 4-7`);
+          return true;
+        metric: relevance/moderate-match-calibration
+
+      # React, Redux, and Jest keywords (all present in original resume) must appear
+      - type: javascript
+        value: |
+          const lc = output.toLowerCase();
+          const required = ['react', 'redux', 'jest'];
+          const missing = required.filter(kw => !lc.includes(kw));
+          if (missing.length > 0) throw new Error('Missing keywords: ' + missing.join(', '));
+          return true;
+        metric: keywords/frontend-terms-present
+
+  # ---- Test 3: Data Scientist - ML (low match) -----------------------------
+  - description: "Data Scientist - ML (LOW MATCH)"
+    vars:
+      jd: |
+        We are seeking a Data Scientist with expertise in machine learning and
+        statistical modeling. Requirements: PhD or Master's in Statistics,
+        Mathematics, or Computer Science. 3+ years of experience with Python ML
+        libraries (scikit-learn, TensorFlow, PyTorch). Strong SQL skills. Experience
+        with A/B testing and experimentation frameworks. Knowledge of NLP and
+        computer vision. Publication record preferred.
+      resume_json: file://../fixtures/sample_resume.json
+
+    assert:
+      # Relevance should be low (1-4) — this is a poor match
+      - type: javascript
+        value: |
+          const data = JSON.parse(output);
+          const r = data.relevance;
+          if (r > 4) throw new Error(`relevance=${r}, expected ≤4 for poor match`);
+          return true;
+        metric: relevance/low-match-calibration
+
+      # Even for low match, experience entry count must be preserved
+      - type: javascript
+        value: |
+          const data = JSON.parse(output);
+          const count = data.experience?.experience?.length;
+          if (count !== 3) throw new Error(`Experience count=${count}, expected 3`);
+          return true;
+        metric: structure/experience-count
+
+# ---------------------------------------------------------------------------
+# Output configuration
+# ---------------------------------------------------------------------------
+outputPath: ./results/latest-eval.json
+
+# Write a human-readable summary to stdout
+sharing: false
