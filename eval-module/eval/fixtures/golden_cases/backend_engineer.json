@@ -1,0 +1,22 @@
+{
+    "name": "Backend Engineer - Distributed Systems",
+    "jd": "We are looking for a Senior Backend Engineer to design and build distributed systems at scale. Requirements: 5+ years of backend development experience. Strong proficiency in Python, Go, or Java. Experience with microservices architecture and containerization (Docker, Kubernetes). Familiarity with message queues (Kafka, RabbitMQ). Database expertise (PostgreSQL, Redis, DynamoDB). Experience with CI/CD pipelines and cloud platforms (AWS preferred). Nice to have: Experience with real-time data processing, system design, mentoring junior engineers.",
+    "expected": {
+        "min_relevance": 7,
+        "max_relevance": 10,
+        "must_include_keywords": ["microservices", "docker", "kafka", "postgresql", "redis", "python", "ci/cd"],
+        "must_not_change": {
+            "experience[0].company": "Tech Innovations Global",
+            "experience[0].startDate": "2021-06",
+            "experience[0].endDate": null,
+            "experience[1].company": "CloudStream Systems",
+            "experience[1].startDate": "2018-03",
+            "experience[1].endDate": "2021-05",
+            "experience[2].company": "DataSphere Solutions"
+        },
+        "min_content_preservation": 0.55,
+        "min_job_alignment": 0.10,
+        "experience_count": 3,
+        "profile_name": "John Doe"
+    }
+}

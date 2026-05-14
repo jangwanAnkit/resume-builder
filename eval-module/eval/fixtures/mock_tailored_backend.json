@@ -1,0 +1,90 @@
+{
+    "profile": {
+        "name": "John Doe",
+        "title": "Senior Backend Engineer | Distributed Systems Architect",
+        "bio": "Results-driven Backend Engineer with over 8 years of experience designing, building, and scaling production distributed systems. Deep expertise in microservices architecture, containerization with Docker and Kubernetes, and real-time data pipelines using Kafka and Spark. Proven track record of leading engineering teams, optimizing database performance with PostgreSQL and Redis, and delivering cloud-native services on AWS.",
+        "avatar": "https://example.com/avatar.png",
+        "socials": {
+            "github": "https://github.com/johndoe",
+            "linkedin": "https://linkedin.com/in/johndoe"
+        },
+        "resume": {
+            "phone": "+1-555-0123",
+            "website": "https://johndoe.dev"
+        }
+    },
+    "experience": {
+        "experience": [
+            {
+                "company": "Tech Innovations Global",
+                "role": "Senior Backend Engineer",
+                "startDate": "2021-06",
+                "endDate": null,
+                "location": "San Francisco, CA (Remote)",
+                "logo": "https://example.com/logo1.png",
+                "details": [
+                    "Led the migration of a legacy monolithic architecture to a microservices-based system using Python, Node.js, and Docker, improving system uptime by 35% and significantly reducing deployment blast radius.",
+                    "Architected and deployed a real-time data processing pipeline using Kafka and Spark, handling over 10 million events daily with sub-second latency.",
+                    "Optimized database performance across PostgreSQL clusters by implementing advanced indexing strategies and Redis caching, resulting in a 50% reduction in API response times.",
+                    "Mentored a team of 5 junior and mid-level engineers on distributed systems design, conducting regular code reviews and architectural workshops on CI/CD and Kubernetes best practices.",
+                    "Collaborated with product owners and stakeholders to define technical roadmaps for cloud-native services on AWS, delivering features ahead of project deadlines."
+                ]
+            },
+            {
+                "company": "CloudStream Systems",
+                "role": "Full Stack Developer",
+                "startDate": "2018-03",
+                "endDate": "2021-05",
+                "location": "Austin, TX",
+                "logo": "https://example.com/logo2.png",
+                "details": [
+                    "Built and scaled RESTful backend APIs using Python (Django) and PostgreSQL, serving 500k+ active users with high availability and robust data integrity.",
+                    "Integrated third-party payment gateways (Stripe, PayPal) and automated invoicing workflows, reducing manual overhead by 20%.",
+                    "Developed and maintained the core user-facing dashboard using React and Redux, enhancing the user experience for 500k+ active users.",
+                    "Implemented CI/CD pipelines using GitHub Actions for containerized services, reducing deployment time from 2 hours to 15 minutes.",
+                    "Enhanced application accessibility (a11y) to meet WCAG 2.1 standards, broadening the reach to a more diverse user base."
+                ]
+            },
+            {
+                "company": "DataSphere Solutions",
+                "role": "Junior Software Engineer",
+                "startDate": "2016-07",
+                "endDate": "2018-02",
+                "location": "New York, NY",
+                "logo": "https://example.com/logo3.png",
+                "details": [
+                    "Assisted in the development of a data visualization platform using Chart.js and Vue.js, helping clients visualize complex market trends.",
+                    "Developed automated unit and integration tests using Jest and Cypress, increasing code coverage from 40% to 85%.",
+                    "Fixed critical bugs and improved the performance of the internal CRM tool, increasing team productivity by 15%."
+                ]
+            }
+        ]
+    },
+    "projects": {
+        "projects": [
+            {
+                "title": "Open-Source E-Commerce Engine",
+                "description": "A high-performance, modular e-commerce backend engine built for scalability. Features include real-time inventory management via Redis, multi-currency support, and a pluggable payment architecture deployed on AWS Lambda.",
+                "technologies": ["Next.js", "TypeScript", "PostgreSQL", "Redis", "AWS Lambda"],
+                "liveUrl": "https://github.com/johndoe/ecommerce-engine",
+                "status": "ongoing"
+            },
+            {
+                "title": "AI-Powered Analytics Dashboard",
+                "description": "An interactive dashboard that leverages OpenAI APIs to provide natural language insights from raw CSV data. Implemented a custom RAG (Retrieval-Augmented Generation) pipeline for data context, built on a Python and Django backend.",
+                "technologies": ["Python", "Django", "OpenAI API", "React", "D3.js"],
+                "liveUrl": "https://analytics.johndoe.dev",
+                "status": "completed"
+            },
+            {
+                "title": "Remote Health Monitoring System",
+                "description": "A HIPAA-compliant IoT platform for monitoring patient vitals in real-time. Designed the low-latency websocket architecture in Go to handle thousands of concurrent data streams, containerized with Docker and infrastructure managed via Terraform.",
+                "technologies": ["Go", "WebSockets", "InfluxDB", "Docker", "Terraform"],
+                "liveUrl": "https://healthsync.dev",
+                "status": "completed"
+            }
+        ]
+    },
+    "relevance": 9,
+    "relevance_analysis": "The candidate's background is an excellent match for this Senior Backend Engineer role. Direct experience with microservices architecture, Docker containerization, Kafka-based real-time data pipelines, PostgreSQL and Redis databases, CI/CD pipelines, and AWS cloud infrastructure maps precisely to the job requirements. The mentorship experience at Tech Innovations Global also aligns with the nice-to-have criteria for mentoring junior engineers. The primary gap is explicit Kubernetes production experience, though the candidate demonstrates strong container orchestration awareness."
+}

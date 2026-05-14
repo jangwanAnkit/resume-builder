@@ -1,0 +1,18 @@
+{
+    "name": "Data Scientist - ML Platform",
+    "jd": "We are seeking a Senior Data Scientist to build and deploy machine learning models at scale. Requirements: 4+ years of experience in data science or machine learning engineering. Strong proficiency in Python and ML frameworks (PyTorch, TensorFlow, scikit-learn). Experience building and deploying ML pipelines (MLflow, Kubeflow, or SageMaker). Solid understanding of statistical analysis and experimental design (A/B testing). Proficiency in SQL and data warehousing (BigQuery, Snowflake, Redshift). Experience with NLP or computer vision is a plus. Nice to have: PhD in CS, Statistics, or related field. Experience with LLMs and prompt engineering. Familiarity with Spark and distributed computing.",
+    "expected": {
+        "min_relevance": 3,
+        "max_relevance": 6,
+        "must_include_keywords": ["python", "machine learning", "data", "sql"],
+        "must_not_change": {
+            "experience[0].company": "Tech Innovations Global",
+            "experience[1].company": "CloudStream Systems",
+            "experience[2].company": "DataSphere Solutions"
+        },
+        "min_content_preservation": 0.50,
+        "min_job_alignment": 0.06,
+        "experience_count": 3,
+        "profile_name": "John Doe"
+    }
+}
